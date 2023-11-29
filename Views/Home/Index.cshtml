@@ -1,0 +1,40 @@
+﻿@model MVCWebApplication_SampleTest.Models.PersonName
+@{
+    ViewData["Title"] = "Home Page";
+}
+@{
+    var alertMessage = TempData["AlertMessage"] as string;
+}
+@if (!string.IsNullOrEmpty(alertMessage))
+{
+    <script>
+        alert('@alertMessage');
+    </script>
+}
+<html>
+<body>
+    <form asp-controller="Home" asp-action="FormSubmit" id="nameForm" method="post">
+        <div class="row">
+            <div class="col-lg-4"><label for="firstname">First name:</label></div>
+            <div class="col-lg-8">
+                <input type="text" asp-for="FirstName" autocomplete="off" id="txtFirstName" name="FirstName" required>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-lg-4"><label for="lastname">Last name:</label></div>
+            <div class="col-lg-8">
+                <input type="text" asp-for="LastName" autocomplete="off" id="txtLastName" name="LastName" required>
+            </div>
+        </div>
+        <br />
+
+        <div class="row">
+            <div class="col-lg-offset-4 col-lg-8">
+                <button type="submit">Submit</button>
+            </div>
+        </div>
+
+    </form>
+</body>
+</html>
